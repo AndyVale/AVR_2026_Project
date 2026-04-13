@@ -1,0 +1,34 @@
+{
+  "SeeDocsAt": "https://cosys-lab.github.io/Cosys-AirSim/settings/",
+  "SettingsVersion": 2.0,
+  "SimMode": "Multidomain",
+  "SubWindows": [
+    {
+      "WindowID": 0,
+      "VehicleName": "Car1",
+      "ImageType": 0,
+      "Visible": true
+    },
+    {
+      "WindowID": 0,
+      "VehicleName": "Drone1",
+      "ImageType": 0,
+      "Visible": true
+    }
+  ],
+  "Vehicles": {
+    "Car1": {
+      "VehicleType": "PhysXCar",
+      "X": 0,
+      "Y": 0,
+      "Z": -2
+    },
+    "Drone1": {
+      "VehicleType": "SimpleFlight",
+      "X": 0,
+      "Y": 0,
+      "Z": -5,
+      "Yaw": 90
+    }
+  }
+}

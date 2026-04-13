@@ -1,0 +1,22 @@
+The development and execution of the simulation environment for the drone and car multi-agent system relied on several key software tools and libraries. Below is the list of the primary tools utilized:
+
+\begin{itemize}
+    \item \textbf{Technologies \& Software:} Visual Studio Community 2022, Git, Github, LaTeX
+    \item \textbf{Platforms:} Desktop Platforms
+    \item \textbf{Programming Languages:} C++, Python
+    \item \textbf{Frameworks:} Unreal Engine 5.5.4, Cosys-AirSim v3.3
+    \item \textbf{Database:} None required
+    \item \textbf{Cloud:} None required
+\end{itemize}
+\noindent
+The following section details the specific roles and implementation of each tool within the project workflow:
+
+\begin{enumerate}
+    \item \textbf{Cosys-AirSim (v3.3.0)}: An advanced, open-source simulator for autonomous vehicles, developed as an extension of Microsoft AirSim by the Cosys-Lab at the University of Antwerp. It is specifically designed for research-focused simulations, offering enhanced support for sensors and multi-agent systems within Unreal Engine 5.5.
+    \item \textbf{Unreal Engine 5.5.4}: A high-performance 3D creation tool used to build the simulation environment. It provides the physics engine (Chaos Physics), photorealistic rendering, and the overall framework for vehicle interaction and environmental dynamics.
+    \item \textbf{Python}: The primary programming language used to develop the control scripts.
+    \item \textbf{C++}: The core programming language used by Unreal Engine and for the development of the Cosys-AirSim plugin.
+    \item \textbf{cosysairsim package}: The official Python client wrapper for the simulation. It provides a Python interface to AirLib, facilitating communication between external control scripts and the Unreal Engine environment via RPC (Remote Procedure Call).
+    \item \textbf{Visual Studio Community 2022}: The Integrated Development Environment (IDE) used for building the C++ components of the plugin and managing the Unreal Engine project dependencies.
+    \item \textbf{\LaTeX}: The document preparation system used for the professional typesetting of this project report.
+\end{enumerate}

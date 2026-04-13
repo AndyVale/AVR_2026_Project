@@ -1,0 +1,3 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets(2189,5): warning MSB9008: il ..\MavLinkCom\MavLinkCom.vcxproj del progetto a cui si fa riferimento non esiste.
+  MultidomainRpcLibServer.cpp
+  AirLib.vcxproj -> C:\Users\AZZURRA\Desktop\Cosys-AirSim\Unreal\Environments\Blocks\Plugins\AirSim\Source\AirLib\lib\x64\Release\AirLib.lib

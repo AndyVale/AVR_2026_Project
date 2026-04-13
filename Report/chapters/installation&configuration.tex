@@ -1,0 +1,21 @@
+The following step-by-step guide assumes the software and hardware prerequisites discussed in Section~\ref{sec:requirements} and uses the \texttt{Blocks} environment provided by the official Cosys-AirSim documentation as the base project; however, it remains applicable to any Unreal Engine 5.5 environment.
+
+\begin{enumerate}[label=\textbf{Step \arabic*:}, leftmargin=*]
+    \item \textbf{Install Cosys-AirSim:} The plugin installation instructions are provided by the \href{https://cosys-lab.github.io/Cosys-AirSim/install_windows/}{official documentation}. 
+    
+    \item \textbf{Set up the Environment:} For the \texttt{Blocks} environment, follow the \href{https://cosys-lab.github.io/Cosys-AirSim/unreal_blocks/}{instructions} provided. Optionally, navigate to the \texttt{\seqsplit{Cosys-AirSim/Unreal/Environments}} directory and copy the \texttt{Blocks} folder to your desired working directory; this folder will serve as the primary Unreal Engine project.
+    
+    \item \textbf{Integrate the Extended Plugin:} Ensure that the \texttt{AirSim} folder is present within your project's \texttt{Plugins} directory. Otherwise, copy and paste the folder from the material downloaded in Step 1 into this directory.
+    
+    \item \textbf{Workspace Cleanup:} To ensure a clean build, delete the following temporary directories if they exist in both the root folder and the \texttt{\seqsplit{Plugins/AirSim}} folder: \texttt{Binaries}, \texttt{Intermediate}, \texttt{Saved}, and \texttt{DerivedDataCache}.
+    
+    \item \textbf{Project Compilation:} You may compile the project using one of two methods:
+    \begin{itemize}
+        \item \textbf{Visual Studio:} Right-click the \texttt{\seqsplit{Blocks.uproject}} file, select \textit{Generate Visual Studio project files}, open the resulting \texttt{.sln} file, and build the solution in Visual Studio.
+        \item \textbf{Direct Launch:} Open the \texttt{\seqsplit{Blocks.uproject}} file directly. When prompted to rebuild the \texttt{Blocks} and \texttt{AirSim} modules, click \textit{Yes} and wait for the compilation to complete.
+    \end{itemize}
+    
+    \item \textbf{Configuration of Simulation Settings:} To specify custom settings (e.g., number of vehicles in the simulation), you must configure the \texttt{settings.json} file. This file must be located in the user's \texttt{Documents/AirSim} directory. Otherwise, a dialog sequence prompting the user to choose the simulation mode will appear at the start of the simulation, and default settings will be assumed for all other parameters. 
+    
+    \item \textbf{Execution:} Once the Unreal Editor is open, press the \textbf{Play} button. You can then execute your control scripts via a terminal. 
+\end{enumerate}

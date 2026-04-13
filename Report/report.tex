@@ -1,0 +1,189 @@
+\documentclass{article}
+
+\usepackage{dibrisunige-report}
+\usepackage{codespace}
+\usepackage{seqsplit}
+\usepackage{longtable}
+
+% Sub-preambles
+% https://github.com/MartinScharrer/standalone
+
+% Encodings
+\usepackage{amsmath,amssymb,gensymb,textcomp}
+
+% Better tables
+% Wide tables go to https://tex.stackexchange.com/q/332902
+\usepackage{array,multicol,multirow,siunitx,tabularx}
+
+% Better enum
+\usepackage{enumitem}
+
+% Graphics
+\usepackage{caption,float}
+
+% Allow setting >max< width of figure
+% 'export' allows adjustbox keys in \includegraphics
+\usepackage[export]{adjustbox}
+
+% For demonstration purposes, remove in production
+\usepackage{mwe}
+
+% Configurations
+\newcounter{memberrowno}
+\setcounter{memberrowno}{0}
+\setlength{\headheight}{32pt}
+\ocoursename{Augmented and Virtual Reality - code 80459 - a.y. 2025/2026}
+\oreporttype{Final Report}
+\otitle{Extending Cosys-AirSim for  Multi-Domain Vehicle Simulation}
+\osubtitle{\textit{Bringing Aerial and Ground Robotics Together in One Simulation}}
+\oadvisor{Manuel Delucchi, Saverio Iacono, Gianni Viardo Vercelli}
+\ostudent{Andrea Valentino Ricotti, Walter Signoretti, Azzurra Suffia}
+\reportlayout%
+
+% Custom commands
+\newcommand*\mean[1]{\bar{#1}}
+
+% Title and Metadata
+\title{Extending Cosys-AirSim for  Multi-Domain Vehicle Simulation}
+\author{Andrea Valentino Ricotti, Walter Signoretti, Azzurra Suffia}
+\date{\today}
+
+\begin{document}
+% Cover Page
+\coverpage%
+
+\section*{Member list \& Workload}
+\begin{center}
+  \begin{tabular}{>{\stepcounter{memberrowno}\thememberrowno}llcc}
+    \toprule
+    \multicolumn{1}{c}{\textbf{No.}} & \textbf{Full name} & \textbf{Student ID} & \textbf{Percentage of work} \\
+    \midrule
+                                     & Andrea Valentino Ricotti      & 5306194             & 100\%                       \\
+                                     & Walter Signoretti             & 5240038             & 100\%                       \\
+                                     & Azzurra Suffia                & 5341007             & 100\%                       \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\newpage
+
+\begin{abstract}
+\noindent
+We enhanced Cosys-Airsim, an Unreal Engine plugin based on Microsoft AirSim, by implementing support for diverse, multi-vehicle fleets. 
+Previously limited to single-type setups, our modification enables concurrent interactions between diverse vehicles like UAVs and UGVs. 
+By assigning unique server ports to each vehicle and introducing new logic classes, we facilitate complex, multi-modal simulation scenarios formerly unsupported by the platform.
+\end{abstract}
+
+\newpage
+
+% Table of Contents
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+\subsection{State of Art}
+\noindent
+\input{chapters/stateofart.tex}
+
+\subsection{Motivation}
+\noindent
+\input{chapters/motivation.tex}
+
+\subsection{AirLib, AirSim \& Cosys-AirSim}
+\noindent
+\input{chapters/airlibairsimcosysairim.tex}
+
+\newpage
+
+\section{System Configuration \& Hardware Requirements}
+\label{sec:requirements}
+\subsection{Hardware Requirements}
+\noindent
+To ensure the high-fidelity physics and graphical rendering of the Cosys-AirSim ecosystem, the following hardware specifications are recommended for all users:
+
+\begin{itemize}
+    \item \textbf{Processor:} x86-64 architecture (although UE5.1+ supports ARM).
+    \item \textbf{Memory:} A minimum of 8\,GB RAM is required, though 16\,GB is strongly recommended.
+    \item \textbf{Storage:} At least 100\,GB of available disk space is recommended to accommodate the full ecosystem, including Unreal Engine, the simulator, and development tools.
+    \item \textbf{Graphics:} A dedicated GPU is necessary to support high graphical settings and maintain the frame rates required for accurate real-time sensor simulation.
+\end{itemize}
+
+\subsection{Software Prerequisites}
+\noindent
+The software environment is primarily optimized for Windows to ensure full compatibility with simulation and debugging tools. Requirements vary depending on whether the user intends to modify the source code:
+
+\begin{itemize}
+    \item \textbf{Operating System:} Windows 11 is the preferred platform. While Ubuntu is supported for execution, it is not recommended for core development as it lacks support for the Visual Studio IDE.
+    \item \textbf{Simulation Engine:} The required simulation environment consists of Unreal Engine 5.5 and the Cosys-AirSim v3.3 framework.
+    \item \textbf{Integrated Development Environment (for Developers):} Visual Studio 2022 is the suggested IDE. Note that installing Unreal Engine and attempting to create a project will typically prompt the user to install Visual Studio Community 2022 if it is not already present.
+    \item \textbf{Version Control (for Developers):} Git and GitHub are required for source code management and collaborative contributions.
+    \item \textbf{Programming Languages:} While Python and C++ are both used for vehicle control and API interaction, framework modifications strictly require C++.
+\end{itemize}\newpage
+
+\section{Cosys-AirSim}
+
+\subsection{Overview}
+\noindent
+An Unreal Engine plugin is a modular collection of code and data that extends the engine's core functionality. In general, these plugins are installed by placing the plugin folder into the \texttt{Plugins} directory of a specific project, allowing the engine to recognize and load the additional features upon startup.
+
+\subsection{Installation \& Configuration}
+\noindent
+\input{chapters/installation&configuration.tex}
+\newpage
+
+\subsection{Software Design \& Core Classes}
+\noindent
+\input{chapters/softwaredesign&coreclasses.tex}
+\newpage
+
+\section{Multidomain Extension}
+\subsection{Overview}
+\noindent
+\input{chapters/overview.tex}
+
+\subsubsection{Target Audience}
+\noindent
+\input{chapters/targetaudience.tex}
+
+\subsubsection{Example of Use Case: Torre dei Conti}
+\noindent
+\input{chapters/usecase.tex}
+
+\subsection{Integration Steps}
+\noindent
+\input{chapters/integrationsteps.tex}
+
+\subsection{Implementation Details}
+
+\subsubsection{Core Class Modifications}
+\noindent
+\input{chapters/coreclassmodifications.tex}
+
+\subsubsection{Development Environment \& Toolchain}
+\noindent
+\input{chapters/tools.tex}
+
+\subsection{Scope and Limitations}
+\noindent
+\input{chapters/limitations.tex}
+
+\newpage
+
+\section{Results}
+%Examples and Test control scripts 
+\noindent
+\input{chapters/results.tex}
+
+\newpage
+
+\section{Conclusion}
+\noindent
+\input{chapters/conclusions.tex}
+
+\newpage
+
+\bibliographystyle{plain}
+\bibliography{refs}
+\nocite{*}
+\end{document}

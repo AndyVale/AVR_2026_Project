@@ -1,0 +1,6 @@
+While our implementation successfully enables the concurrent simulation of multiple vehicle domains, certain technical limitations remain due to the project's development timeline. These constraints are not viewed as failures but rather as opportunities for future work to further enhance the framework:
+\begin{itemize}    
+   \item \textbf{Dynamic Camera Switching:} A significant limitation is the inability to use any built-in mechanism to dynamically switch the main camera view between different vehicles in the Unreal Engine scene during a live simulation. While it is possible to bind the three available Picture-in-Picture (PiP) subwindows to vehicles in \texttt{\seqsplit{settings.json}} before starting, this is strictly limited to three additional vehicles. Furthermore, these windows are quite small, which restricts the user's visibility and makes it difficult to monitor individual agents if they move far apart or encounter unexpected issues.
+    
+    \item \textbf{Expanded Vehicle Support:} Currently, supported vehicle types are limited to \texttt{\seqsplit{kVehicleTypePhysXCar}} and \texttt{\seqsplit{kVehicleTypeSimpleFlight}}. Expanding operational support to include additional domains and vehicle types, such as \texttt{kVehicleTypeArduRover}, would represent a significant enhancement.
+\end{itemize}

@@ -1,0 +1,9 @@
+To fully grasp the scope of this extension, it is necessary to understand the underlying architecture of the simulation ecosystem and the specific differences between AirLib, AirSim~\cite{airsim}, and Cosys-AirSim~\cite{jansen2023cosys}.
+
+\begin{itemize}
+    \item \textbf{AirLib:} This is the foundational, engine-independent C++ library that serves as the core "brain" of the simulator. It handles the underlying physics, vehicle dynamics, and external API communications, functioning completely independently of the visual rendering engine.
+    
+    \item \textbf{AirSim:} Originally developed by Microsoft Research, AirSim is the complete open-source framework that encapsulates AirLib and bridges it with Unreal Engine via dedicated plugins. However, Microsoft has officially archived the open-source repository, ceasing further updates and leaving the original framework incompatible with newer technologies.
+    
+    \item \textbf{Cosys-AirSim:} To keep the project alive and modernize its capabilities, Cosys-Lab created Cosys-AirSim as a direct fork of the original AirSim. Beyond simply maintaining the code, Cosys-Lab significantly extended the framework by migrating it to Unreal Engine 5, enhancing the sensor suite, and improving overall fidelity. However, like its predecessor, it still has the limitation of only supporting a single vehicle domain per simulation session.
+\end{itemize}
