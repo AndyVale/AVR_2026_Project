@@ -19,16 +19,22 @@ def reload_scene():
         print(f"[ERROR] Failed to trigger map reload: {e}")
 
 def main():
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
-
     parser = argparse.ArgumentParser()
-    parser.add_argument("--ue5", required=True, help="Path to UnrealEditor.exe")
-    parser.add_argument("--project", required=True, help="Path to .uproject")
+    parser.add_argument("--ue5", help="Path to UnrealEditor.exe")
+    parser.add_argument("--project", help="Path to .uproject")
     parser.add_argument("--tests", nargs='+', required=True, help="Folder names or 'all'")
+    parser.add_argument("--no-launch", action="store_true", help="Skip launching UE5 (assumes it's already running)")
     args = parser.parse_args()
+
+    if not args.no_launch and (not args.ue5 or not args.project):
+        parser.error("--ue5 and --project are required unless --no-launch is specified")
+
+    ue5_path = str(Path(args.ue5).resolve()) if args.ue5 else None
+    project_path = str(Path(args.project).resolve()).replace("\\", "/") if args.project else None
 
     airsim_path = Path.home() / "Documents" / "AirSim" / "settings.json"
     airsim_path.parent.mkdir(parents=True, exist_ok=True)
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
     if "all" in args.tests:
         test_list = [d.name for d in Path(".").iterdir() if d.is_dir() and (d / "script.py").exists()]
@@ -46,11 +52,15 @@ def main():
     print(f"[TEST] Copying initial settings for '{first_test}'...")
     shutil.copy(Path(first_test) / "settings.json", airsim_path)
 
-    print("[TEST] Starting UE5 scene (this may take a moment)...")
-    ue5_proc = subprocess.Popen([
-        args.ue5, args.project, "-game", "-windowed", "-ResX=1280", "-ResY=720"
-    ])
-    time.sleep(20) # Buffer for initial engine heavy load
+    if not args.no_launch:
+        print("[TEST] Starting UE5 scene (this may take a moment)...")
+        ue5_proc = subprocess.Popen([
+            ue5_path, project_path, "-game", "-windowed", "-ResX=1280", "-ResY=720"
+        ])
+        time.sleep(60) # Buffer for initial engine heavy load (increased to allow UE5 loading)
+    else:
+        print("[TEST] Skipping UE5 launch. Assumes simulator is already in 'Play' mode.")
+        ue5_proc = None
 
     for i, name in enumerate(test_list):
         test_dir = Path(name)
@@ -74,9 +84,12 @@ def main():
         
         time.sleep(2)
 
-    print("[TEST] All scheduled tests finished. Terminating UE5 process.")
-    ue5_proc.terminate()
-    ue5_proc.wait()
+    if ue5_proc:
+        print("[TEST] All scheduled tests finished. Terminating UE5 process.")
+        ue5_proc.terminate()
+        ue5_proc.wait()
+    else:
+        print("[TEST] All scheduled tests finished.")
     print("[TEST] Cleanup complete. Goodbye.")
 
 if __name__ == "__main__":

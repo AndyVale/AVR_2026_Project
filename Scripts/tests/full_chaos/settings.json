@@ -63,5 +63,6 @@
       "Z": -2.2,
       "Yaw": 0
     }
-  }
+  },
+  "LogMessagesVisible": false
 }

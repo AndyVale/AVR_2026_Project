@@ -2,12 +2,27 @@
   "SeeDocsAt": "https://cosys-lab.github.io/Cosys-AirSim/settings/",
   "SettingsVersion": 2.0,
   "SimMode": "Multidomain",
-  "SubWindows":[
-    {"WindowID":0, "VehicleName":"Car1", "ImageType":0, "Visible":true},
-    {"WindowID":1, "VehicleName":"Car2", "ImageType":0, "Visible":true},
-    {"WindowID":2, "VehicleName":"Drone1", "ImageType":0, "Visible":true}
+  "LogMessagesVisible": false,
+  "SubWindows": [
+    {
+      "WindowID": 0,
+      "VehicleName": "Car2",
+      "ImageType": 0,
+      "Visible": true
+    },
+    {
+      "WindowID": 1,
+      "VehicleName": "Drone1",
+      "ImageType": 0,
+      "Visible": true
+    },
+    {
+      "WindowID": 2,
+      "VehicleName": "Drone2",
+      "ImageType": 0,
+      "Visible": true
+    }
   ],
-
   "Vehicles": {
     "Car1": {
       "VehicleType": "PhysXCar",

@@ -62,7 +62,7 @@ drone_client.moveToPositionAsync(20, 5, -4, 3, vehicle_name="Drone2")
 # —————————————————————————————————————————————
 # 3. Monitor the Fleet
 print("\n--- Monitoring Fleet Positions ---")
-for i in range(8):
+for i in range(40):
     c1_pos = car_client.getCarState(vehicle_name="Car1").kinematics_estimated.position
     c2_pos = car_client.getCarState(vehicle_name="Car2").kinematics_estimated.position
     d1_pos = drone_client.getMultirotorState(vehicle_name="Drone1").kinematics_estimated.position

@@ -6,6 +6,7 @@
     {
       "WindowID": 0,
       "VehicleName": "Car1",
+      "CameraName": "front_right",
       "ImageType": 0,
       "Visible": true
     },
@@ -30,5 +31,6 @@
       "Z": -2,
       "Yaw": 0
     }
-  }
+  },
+  "LogMessagesVisible": false
 }
